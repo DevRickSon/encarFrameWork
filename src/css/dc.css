@@ -1,0 +1,42 @@
+h1{color:red}
+
+.typical_article {overflow:hidden;}
+.typical_article .newest_area {position:relative;float:left;}
+.typical_article .newest_area .newest_article {position:absolute;width:1000%;}
+.typical_article .newest_area .newest_article li {position:relative;float:left;width: 645px;height:445px;}
+.typical_article .newest_area .newest_article li span {display:block;}
+.typical_article .newest_area .newest_article li .img_article {overflow:hidden;display:block;width:645px;height:445px;border:1px solid #f5f5f5;border-bottom:0;}
+.typical_article .newest_area .newest_article li .img_article img {width:100%;height:100%;vertical-align:top;transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);-ms-transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);}
+.typical_article .newest_area .newest_article li:focus .img_article img,
+.typical_article .newest_area .newest_article li:hover .img_article img{transform: scale(1.03,1.03);-ms-transform: scale(1.03,1.03);}
+.typical_article .newest_area .newest_article li .smry {position:absolute;bottom:0;left:0;width:609px;text-align:left;padding:23px 18px;z-index:9;}
+.typical_article .newest_area .newest_article li .smry .tit_smry {overflow:hidden;display:block;color:#fff;font-size:20px;letter-spacing:-1px;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;-ms-text-overflow:ellipsis;}
+.typical_article .newest_area .newest_article li .smry .cnt_smry {overflow:hidden;height:15px;margin-top:9px;color:#9b9b9b;font-size:13px;letter-spacing:-1px;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;-ms-text-overflow:ellipsis;}
+.typical_article .past_article {float:right;width:310px;}
+.typical_article .past_list li {position:relative;overflow:hidden;margin-top:25px;}
+.typical_article .past_list li:first-child {margin-top:0;}
+.typical_article .past_list li span {display:block;}
+.typical_article .past_list li .img_article {overflow:hidden;width:310px;height:210px;}
+.typical_article .past_list li .img_article img {width:100%;height:100%;vertical-align:top;transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);-ms-transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);}
+.typical_article .past_list li .img_article img:focus,
+.typical_article .past_list li .img_article img:hover{transform: scale(1.03,1.03);-ms-transform: scale(1.03,1.03);}
+.typical_article .past_list li .smry {position:absolute;bottom:0;left:0;overflow:hidden;width:260px;padding:10px 25px;text-align:center;z-index:9;}
+.typical_article .past_list li .smry .tit_smry {overflow:hidden;display:block;height:30px;color:#fff;line-height:16px;font-weight:normal;}
+.typical_article .past_list li .smry .cnt_smry {overflow:hidden;height:30px;margin-top:10px;color:#747474;font-size:11px;}
+.showRoll {overflow:hidden;position:relative;width:645px;height:445px;}
+.showPlay {display:none;position:absolute;right:245px;width:16px;height:16px;bottom:20px;z-index:5;}
+.showPlay a {display:block;width:16px;height:16px;}
+.showPlay .play {background:url('/images/mg/icon_play.png') no-repeat 0 0;}
+.showPlay .pause {background:url('/images/mg/icon_stop.png') no-repeat 0 0;}
+.showPlay a span {display:block;text-indent:-999999em;}
+.showPlay .play.on, .typical_article .showPlay .pause.on, .event_stin .showPlay .pause.on {display:none;}
+.showArrow {display:none;position:absolute;left:0;top:213px;width:100%;}
+.showArrow a {position:absolute;width:44px;height:44px;}
+.showArrow span {overflow:hidden;display:block;text-indent:-99999em;}
+.showArrow .prev {left:30px;background:url('/images/mg/btn_slide_left.png') no-repeat 0 0;}
+.showArrow .next {right:30px;background:url('/images/mg/btn_slide_right.png') no-repeat 0 0;}
+.showNavi {display:none;overflow:hidden;position:absolute;left:50%;bottom:25px;}
+.showNavi a{float:left;width:6px;height:6px;margin-left:10px;background:url('/images/mg/img_slide_nav_off.png') no-repeat 0 0;}
+.showNavi a:first-child{margin-left:0;}
+.showNavi .on{background:url('/images/mg/img_slide_nav_on.png') no-repeat 0 0;}
+.showNavi span {display:inline-block;text-indent:-99999em;}
