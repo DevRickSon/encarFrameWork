@@ -13,9 +13,10 @@ entryArr.forEach(function(item, i){
     let entry = entryArr[i];
     let dirname = path.dirname(item);
     let name = path.basename(item, '.js');
-    
-    entries[name] = item;
-    dirnames[name] = dirname.replace(/\.\/src\/js\/page\/(.*)/, '$1');
+    let key = dirname.replace(/\.\/src\/js\/page\/(.*)/, '$1');
+
+    entries[key + '/' + name] = item;
+    dirnames[key + '/' + name] = key;
 });
 
 let plugins = [
@@ -24,15 +25,16 @@ let plugins = [
         './public/css/*',
         './public/js/*'
     ]),
-    
-    //new webpack.optimize.CommonsChunkPlugin(),
-    
+
     new ExtractTextPlugin({
-        filename: 'css/[name].css',
-        allChunks: false,
-        disable: false
+        filename: function(getPath){
+            var arr = getPath('css/[name].css').split('/'),
+                len = arr.length;
+
+            return 'css/' + arr[len-1];
+        }
     }),
-    
+
     new webpack.optimize.UglifyJsPlugin({
         mangle: {
             // mangle options, if any
@@ -42,14 +44,14 @@ let plugins = [
             //ignore_quoted: true,      // do not mangle quoted properties and object keys
         },
         compress: {
-            screw_ie8: false, 
+            screw_ie8: false,
             warnings: false,
             unused: true
             //properties: false // optional: don't convert foo["bar"] to foo.bar
         },
         output: {
             screw_ie8: false,
-            comments: false 
+            comments: false
         }
     })
 ];
@@ -57,8 +59,8 @@ let plugins = [
 for(let key in entries){
     plugins.push(
         new HtmlWebpackPlugin({
-            template: './src/html/' + dirnames[key] + '/' + key + '.html',
-            filename: 'html/' + dirnames[key] + '/' + key + '.html',
+            template: './src/html/' + key + '.html',
+            filename: 'html/' + key + '.html',
             inject: 'body',
             chunks: [key]
         })
@@ -67,13 +69,13 @@ for(let key in entries){
 
 module.exports = {
     entry: entries,
-    
+
     output: {
         path: path.join(__dirname, 'public'),
         publicPath: '/',
         filename: 'js/[name].js'
     },
-    
+
     module: {
         rules: [
             {
@@ -82,18 +84,28 @@ module.exports = {
                     fallback: 'style-loader',
                     use: 'css-loader'
                 })
+            },
+
+            {
+                test: /\.handlebars$/,
+                use: 'handlebars-loader'
             }
         ]
     },
-    
+
     plugins: plugins,
-    
+
     resolve: {
+        extensions: ['.js'],
         modules: [
             path.resolve('./src'),
             'node_modules'
-        ]
-    }
-    
+        ],
+
+        alias: {
+            'handlebars': 'handlebars/dist/handlebars.min'
+        }
+    },
+
     //devtool: 'cheap-eval-source-map'
 };

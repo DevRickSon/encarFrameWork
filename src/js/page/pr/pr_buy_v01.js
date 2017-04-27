@@ -1,11 +1,35 @@
+//import css
 require('css/common.css');
 require('css/pr.css');
 
-var stringUtil = require('js/util/stringUtil');
-var replaceString = require('js/util/stringUtil').replaceString;
-var validationUtil = require('js/util/validationUtil');
+//import dependencies
+var URL = require('config/url'),
+    handlebars = require('handlebars'),
+    getJSON = require('js/util/requestUtil').getJSON,
+    tmpl = require('tmpl/dc/warranty.handlebars');
 
-alert('legacy IE');
-alert('use string util: ' + stringUtil.getSubString('JUNGHO SON', 7, 10));
-alert('use string util: ' + replaceString('JUNGHO SON', 'JUNGHO', 'RICK'));
-alert('use validation util: ' + validationUtil.isNull(null));
+//initialize
+init();
+
+function init(){
+    setEvent();
+}
+
+function setEvent(){
+    $('button').on('click', function(){
+        setWarranty();
+    });
+}
+
+function setWarranty(){
+    var url = URL.warranty,
+        query = {
+            count: true,
+            sr: '|ModifiedDate|0|5',
+            q: '(And.(And.Hidden.N._.(C.CarType.Y._.Manufacturer.현대.))_.Separation.B.)'
+        };
+
+    getJSON(url, query, 'GET', function(data){
+        $('.tmpl_warranty').empty().append(tmpl(data));
+    });
+}

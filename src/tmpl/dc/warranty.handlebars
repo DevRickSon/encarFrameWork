@@ -1,0 +1,28 @@
+
+<ul class="car_list" id="sr_warrant">
+    {{#SearchResults}}
+        <li>
+            <a href="" class="newLink _link" target="_blank">
+                <span class="img">
+                    <span class="blt">
+                        <span class="ass">보증</span>
+                        <img class="thumb" src="http://ci.encar.com/carpicture{{Photo}}001.jpg?alias=warrant_Search">
+                    </span>
+                    <span class="mywish">
+                        <input type="button" value="찜하기" class="btwish btn_zim _zzim ">
+                        <input type="button" value="비교하기" class="btwish btn_vs _compare ">
+                    </span>
+                </span>
+                <span class="inf">
+                    <span class="cls"><strong>{{Manufacturer}}</strong> <em>{{Model}}</em></span>
+                    <span class="dtl"><strong>{{Badge}}</strong> <em>{{BadgeDetail}}</em></span>
+                </span>
+                <span class="detail">
+                    <span class="yer">{{Year}}<em>({{FormYear}}년식)</em></span>
+                    <span class="km">{{Mileage}}Km</span></span>
+                    <span class="val"><span class="prc"><strong>{{Price}}</strong>만원</span>
+                </span>
+            </a>
+        </li>
+    {{/SearchResults}}
+</ul>
