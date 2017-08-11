@@ -1,0 +1,15 @@
+{{!--
+    @template optsModelGroup.handlebars
+    - 엔카보증, 헛걸음 보상 검색 옵션 리스트: 모델
+--}}
+{{#if Manufacturer0}}
+    {{#if ModelGroup}}
+        {{#each ModelGroup.Facets}}
+            {{#if isView}}
+                <li><a data-action="{{Action}}" data-code="{{Metadata.Code}}" {{#if IsSelected}}class="on"{{/if}}>{{DisplayValue}}</a></li>
+            {{/if}}
+        {{/each}}
+    {{/if}}
+{{else}}
+    <li class="none">제조사를 선택하면<br /> 리스트가 열립니다.</li>
+{{/if}}

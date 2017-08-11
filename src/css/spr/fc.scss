@@ -1,0 +1,101 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$rs-layer-left-name: 'rs_layer_left';
+$rs-layer-left-x: 11px;
+$rs-layer-left-y: 0px;
+$rs-layer-left-offset-x: -11px;
+$rs-layer-left-offset-y: 0px;
+$rs-layer-left-width: 11px;
+$rs-layer-left-height: 14px;
+$rs-layer-left-total-width: 22px;
+$rs-layer-left-total-height: 15px;
+$rs-layer-left-image: '/images/spr/fc.png';
+$rs-layer-left: (11px, 0px, -11px, 0px, 11px, 14px, 22px, 15px, '/images/spr/fc.png', 'rs_layer_left', );
+$rs-pp-left-name: 'rs_pp_left';
+$rs-pp-left-x: 0px;
+$rs-pp-left-y: 0px;
+$rs-pp-left-offset-x: 0px;
+$rs-pp-left-offset-y: 0px;
+$rs-pp-left-width: 11px;
+$rs-pp-left-height: 15px;
+$rs-pp-left-total-width: 22px;
+$rs-pp-left-total-height: 15px;
+$rs-pp-left-image: '/images/spr/fc.png';
+$rs-pp-left: (0px, 0px, 0px, 0px, 11px, 15px, 22px, 15px, '/images/spr/fc.png', 'rs_pp_left', );
+$spritesheet-width: 22px;
+$spritesheet-height: 15px;
+$spritesheet-image: '/images/spr/fc.png';
+$spritesheet-sprites: ($rs-layer-left, $rs-pp-left, );
+$spritesheet: (22px, 15px, '/images/spr/fc.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

@@ -1,5 +1,5 @@
-require('css/common.css');
-require('css/dc.css');
+require('css/common.scss');
+require('css/dc.scss');
 
 var uiSlide = require('js/ui/uiSlide');
 var uiTab = require('js/ui/uiTab');

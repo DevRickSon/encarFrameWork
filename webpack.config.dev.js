@@ -3,11 +3,21 @@ const path = require('path');
 const glob = require('glob');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackBrowserPlugin = require('webpack-browser-plugin');
 
-let entries = {};
+const SpritesmithPlugin = require('webpack-spritesmith');
+
+let entries = {
+    vendor: [
+        'jquery',
+        'handlebars',
+        'sammy'
+    ]
+};
 let dirnames = {};
 let entryArr = glob.sync('./src/js/page/*/**.js');
+
+let sprArr = [];
+let entryArrSpr = glob.sync('./src/images/spr/*');
 
 entryArr.forEach(function(item, i){
     let entry = entryArr[i];
@@ -19,31 +29,61 @@ entryArr.forEach(function(item, i){
     dirnames[key + '/' + name] = key;
 });
 
+entryArrSpr.forEach(function(item, i){
+    let arr = item.split('/');
+    let leng = arr.length;
+    let key = arr[leng-1];
+
+    sprArr[i] = key
+});
+
 let plugins = [
     new ExtractTextPlugin({
         filename: function(getPath){
-            var arr = getPath('css/[name].css').split('/'),
+            var arr = getPath('css/[name].scss').split('/'),
                 len = arr.length;
 
-            return 'css/' + arr[len-1];
+            return 'css/' + arr[len-1].split('.')[0] + '.css';
         }
     }),
 
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: Infinity
+    }),
 
-    new WebpackBrowserPlugin({
-        port: 8081,
-        url: 'http://10.19.1.83'
-    })
+    new webpack.HotModuleReplacementPlugin()
 ];
 
 for(let key in entries){
+    if(key === 'vendor') continue;
+
     plugins.push(
         new HtmlWebpackPlugin({
             template: './src/html/' + key + '.html',
             filename: 'html/' + key + '.html',
             inject: 'body',
-            chunks: [key]
+            chunks: ['vendor', key]
+        })
+    );
+}
+
+for(let i=0; i<sprArr.length; i++){
+    let loc = sprArr[i];
+
+    plugins.push(
+        new SpritesmithPlugin({
+            src: {
+                cwd: path.resolve(__dirname, 'src/images/spr/' + loc),
+                glob: '*.png'
+            },
+            target: {
+                image: path.resolve(__dirname, 'public/images/spr/' + loc + '.png'),
+                css: path.resolve(__dirname, 'src/css/spr/' + loc + '.scss')
+            },
+            apiOptions: {
+                cssImageRef: '/images/spr/' + loc + '.png'
+            }
         })
     );
 }
@@ -54,22 +94,61 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/public'),
         publicPath: '/',
-        filename: 'js/[name].js'
+        filename: 'js/[name].[hash].js',
+        chunkFilename: 'js/[name].[chunkhash].chunk.js'
     },
 
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: 'css-loader'
-                })
+                test: /\.handlebars$/,
+                use: 'handlebars-loader'
             },
 
             {
-                test: /\.handlebars$/,
-                use: 'handlebars-loader'
+                test: /\.scss$/,
+                use: [
+                    require.resolve('style-loader'),
+                    {
+                        loader: require.resolve('css-loader'),
+                        options: {
+                            importLoaders: 1
+                            //modules: true,
+                            //localIdentName: '[path][name]__[local]--[hash:base64:5]'
+                        },
+                    },
+                    // {
+                    //     loader: require.resolve('postcss-loader'),
+                    //     options: {
+                    //         // Necessary for external CSS imports to work
+                    //         // https://github.com/facebookincubator/create-react-app/issues/2677
+                    //         ident: 'postcss',
+                    //         plugins: () => [
+                    //             require('postcss-flexbugs-fixes'),
+                    //             autoprefixer({
+                    //                 browsers: [
+                    //                     '>1%',
+                    //                     'last 4 versions',
+                    //                     'Firefox ESR',
+                    //                     'not ie < 9', // React doesn't support IE8 anyway
+                    //                 ],
+                    //                 flexbox: 'no-2009',
+                    //             }),
+                    //         ]
+                    //     }
+                    // },
+                    {
+                        loader: require.resolve('sass-loader'),
+                        options: {
+                            //includePaths: [paths.styles]
+                        }
+                    }
+                ],
+            },
+
+            {
+                test: /\.png$/,
+                use: 'file-loader?name=i/[hash].[ext]'
             }
         ]
     },
@@ -82,7 +161,8 @@ module.exports = {
         port: 8081,
         inline: true,
         hot: true,
-        host: '10.19.1.83',
+        host: '0.0.0.0',
+        disableHostCheck: true,
         proxy: {
             '/api': 'http://api.encar.com/search/car/list/general'
         },
@@ -103,9 +183,10 @@ module.exports = {
             path.resolve('./src'),
             'node_modules'
         ],
-
         alias: {
-            'handlebars': 'handlebars/dist/handlebars.min'
+            'jquery': 'jquery/dist/jquery.min',
+            'handlebars': 'handlebars/dist/handlebars.min',
+            'sammy': 'sammy/lib/min/sammy-latest.min'
         }
     },
 

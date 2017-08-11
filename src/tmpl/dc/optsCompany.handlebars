@@ -1,0 +1,9 @@
+{{!--
+    @template warranty.handlebars
+    - 엔카보증, 헛걸음 보상 검색 리스트 : 제조사
+--}}
+{{#Facets}}
+    {{#if isView}}
+        <li><a data-action="{{Action}}" data-code="{{Metadata.Code}}" {{#if IsSelected}}class="on"{{/if}}>{{DisplayValue}}</a></li>
+    {{/if}}
+{{/Facets}}

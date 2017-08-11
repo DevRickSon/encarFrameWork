@@ -1,0 +1,32 @@
+body.pr_buy_v01{text-align:left}
+.pr_buy_v01 .wrap{width:80%;margin:20px auto}
+
+@mixin spr(){
+    display:block;
+    overflow:hidden;
+    text-indent:-10000em;
+    margin-top:10px;
+}
+
+@import 'spr/dc.scss';
+@import 'spr/fc.scss';
+
+.ico1{
+    @include spr();
+    @include sprite($bg-form-radio);
+}
+
+.ico2{
+    @include spr();
+    @include sprite($rs-layer-left);
+}
+
+.ico3{
+    @include spr();
+    @include sprite($rs-caution-point);
+}
+
+.ico4{
+    @include spr();
+    @include sprite($rs-pp-left);
+}

@@ -1,10 +1,11 @@
 //import css
-require('css/common.css');
-require('css/pr.css');
+// require('css/common.css');
+// require('css/pr.css');
+require('css/pr.scss');
 
 //import dependencies
-var URL = require('config/url'),
-    handlebars = require('handlebars'),
+var URL = require('config/config.url'),
+    $ = require('jquery'),
     getJSON = require('js/util/requestUtil').getJSON,
     tmpl = require('tmpl/dc/warranty.handlebars');
 

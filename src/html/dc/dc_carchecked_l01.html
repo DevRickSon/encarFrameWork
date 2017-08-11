@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body class="pr pr_buy_v02">
+    <form id="search" name="search">
+        <input type="hidden" id="company" name="company" value="">
+        <input type="hidden" id="modelgroup" name="modelgroup" value="">
+        <input type="hidden" id="model_firstcd" name="model_firstcd" value="">
+        <input type="hidden" id="model" name="model" value="">
+        <input type="hidden" id="categorycd" name="categorycd" value="">
+        <input type="hidden" id="category" name="category" value="">
+        <input type="hidden" id="startprice" name="startprice" value="">
+        <input type="hidden" id="endprice" name="endprice" value="">
+        <input type="hidden" id="listType" name="listType" value="img">
+        <input type="hidden" id="pagenum" name="pagenum" value="1">
+        <input type="hidden" id="totalCnt" name="totalCnt" value="4728">
+        <input type="hidden" id="carType" name="carType" value="kor">
+
+        <!-- 검색 쿼리용 -->
+        <input type="hidden" id="query_sr" value="(And.Hidden.N._.CarType.Y._.Separation.B.)">
+
+
+    			<h3 class="blind">엔카 보증차량</h3>
+
+    			<!-- section.info begin -->
+    			<div class="visual" id="l_carchecked">
+    				<div class="text">
+    					<strong>믿고 사는 중고차, 엔카 보증차량</strong>
+    					<ul>
+    						<li>전문평가사 검증</li>
+    						<li>실매물 확인</li>
+    						<li>사고 안심 (프레임 정상차량)</li>
+    					</ul>
+    				</div>
+    			</div>
+    			<!-- section.info end -->
+
+    			<!-- section.search begin -->
+    			<h4 class="blind">검색 영역 시작</h4>
+    			<div class="carcheckedSearch">
+    				<fieldset>
+    					<legend>검색 조건 선택</legend>
+    					<div class="car_option">
+    						<!-- 차종 선택 -->
+    						<div class="type">
+    							<ul>
+    								<li class="type1"><a class="_f_car_type" data-type="경차" data-code="001"><span>경차</span></a></li>
+    								<li class="type2"><a class="_f_car_type" data-type="소형차" data-code="002"><span>소형차</span></a></li>
+    								<li class="type3"><a class="_f_car_type" data-type="준중형차" data-code="003"><span>준중형차</span></a></li>
+    								<li class="type4"><a class="_f_car_type" data-type="중형차" data-code="004"><span>중형차</span></a></li>
+    								<li class="type5"><a class="_f_car_type" data-type="대형차" data-code="005"><span>대형차</span></a></li>
+    								<li class="type6"><a class="_f_car_type" data-type="스포츠카" data-code="006"><span>스포츠카</span></a></li>
+    								<li class="type7"><a class="_f_car_type" data-type="SUV" data-code="007"><span>SUV</span></a></li>
+    								<li class="type8"><a class="_f_car_type" data-type="RV" data-code="008"><span>RV</span></a></li>
+    								<li class="type9"><a class="_f_car_type" data-type="승합차" data-code="009"><span>승합차</span></a></li>
+    							</ul>
+    						</div>
+    						<!-- 옵션 선택 -->
+    						<div class="option">
+    							<div class="sec price">
+    								<label class="" for="stdmndprc"><span>가격</span></label>
+    								<span class="from">
+    									<select id="stdmndprc" name="stdmndprc" class="select price">
+                                            <!--@ replace template : -->
+                                        </select>
+    								</span>
+    								~
+    								<span class="to">
+    									<select id="enddmndprc" name="enddmndprc" class="select price">
+                                            <!--@ replace template : -->
+                                        </select>
+    								</span>
+    							</div>
+    						</div>
+    					</div>
+    					<div class="car_search">
+    						<!-- 제조사 선택 -->
+    						<div class="sec step1">
+    							<h5><span>제조사</span></h5>
+    							<div class="list">
+    								<ul id="companySearch">
+                                        <!--@ replace template : -->
+                                    </ul>
+                                </div>
+    						</div>
+    						<!-- 모델 선택 -->
+    						<div class="sec step2">
+    							<h5><span>모델</span></h5>
+    							<div class="list">
+    								<ul id="modelgroupSearch">
+                                        <!--@ replace template : -->
+                                    </ul>
+    							</div>
+    						</div>
+    						<!-- 세부모델 선택 -->
+    						<div class="sec step3">
+    							<h5><span>세부모델</span></h5>
+    							<div class="list">
+    								<ul id="modelSearch">
+                                        <!--@ replace template : -->
+                                    </ul>
+    							</div>
+    						</div>
+    					</div>
+    				</fieldset>
+    			</div>
+    			<!-- section.search end -->
+
+    			<h4 class="blind">검색 결과 영역 시작</h4>
+
+    			<!-- section.list begin -->
+    			<!-- 로딩중 -->
+    			<div class="case_loading" style="display: none; height: 37px; opacity: 0;"><span class="dimmed"></span><p class="text"><span></span></p></div>
+    			<!-- //로딩중 -->
+
+    			<div class="section list">
+    				<h4 class="h_carchecked">엔카 보증차량</h4>
+
+    				<!-- part.list begin -->
+    				<div class="part list">
+    					<p class="list_option">
+    						<label class="blind" for="viewList">목록 보기 방식 선택</label>
+    						<input type="button" id="viewList" class="btn_c list" value="리스트형" title="리스트형으로 보기" onclick="javascript:changeList('list');"><!-- 활성시 "_on" 처리 -->
+    						<input type="button" id="viewImage" class="btn_c image image_on" value="이미지형" title="이미지형으로 보기" onclick="javascript:changeList('img');">
+    					</p>
+
+    					<div id="img_list"> <ul class="car_list car_list_big">  <li> <a href='javascript:goPage("20560889&amp;listAdvType=chk_list", 1);' style="height: 278px;"> <span class="img"> <span class="blt"> <span class="ass">보증</span> <img src="http://ci.encar.com/carpicture/carpicture06/pic2056/20560889_025.jpg" class="thumb" alt="기아 모하비 4WD KV300 (세부등급 없음) 20560889" onerror="javascript:noImg_inquiry_B(this);"> </span> </span> <span class="inf"> <span class="cls"><strong>기아</strong> <em>모하비</em></span> <span class="dtl"><strong>4WD KV300 (세부등급 없음)</strong></span> </span> <span class="detail"> <span class="yer">12/02식</span>  <span class="km">135,210km</span>  <span class="trs">오토</span>  <span class="fue">디젤</span>  <span class="lo">인천</span>  </span> <span class="val"> <span class="prc"><strong>2,390</strong>만원</span>  <span class="real"><span class="ok">진단완료</span> 실차확인 <em>2017/03/16</em></span>  </span> </a> </li>  <li> <a href='javascript:goPage("20631264&amp;listAdvType=chk_list", 1);' style="height: 278px;"> <span class="img"> <span class="blt"> <span class="ass">보증</span> <img src="http://ci.encar.com/carpicture/carpicture03/pic2063/20631264_025.jpg" class="thumb" alt="현대 그랜드 스타렉스 어린이보호차 undefined 20631264" onerror="javascript:noImg_inquiry_B(this);"> </span> </span> <span class="inf"> <span class="cls"><strong>현대</strong> <em>그랜드 스타렉스</em></span> <span class="dtl"><strong>어린이보호차 </strong></span> </span> <span class="detail"> <span class="yer">12/11식(13년형)</span>  <span class="km">30,339km</span>  <span class="trs">오토</span>  <span class="fue">디젤</span>  <span class="lo">경기</span>  </span> <span class="val"> <span class="prc"><strong>1,950</strong>만원</span>  <span class="real"><span class="ok">진단완료</span> 실차확인 <em>2017/03/29</em></span>  </span> </a> </li>  <li> <a href='javascript:goPage("20652466&amp;listAdvType=chk_list", 1);' style="height: 278px;"> <span class="img"> <span class="blt"> <span class="ass">보증</span> <img src="http://ci.encar.com/carpicture/carpicture05/pic2065/20652466_025.jpg" class="thumb" alt="기아 스포티지 R 디젤 2WD 리미티드 undefined 20652466" onerror="javascript:noImg_inquiry_B(this);"> </span> </span> <span class="inf"> <span class="cls"><strong>기아</strong> <em>스포티지 R</em></span> <span class="dtl"><strong>디젤 2WD 리미티드 </strong></span> </span> <span class="detail"> <span class="yer">10/06식(11년형)</span>  <span class="km">107,748km</span>  <span class="trs">오토</span>  <span class="fue">디젤</span>  <span class="lo">경기</span>  </span> <span class="val"> <span class="prc"><strong>1,380</strong>만원</span>  <span class="real"><span class="ok">진단완료</span> 실차확인 <em>2017/04/04</em></span>  </span> </a> </li>  <li> <a href='javascript:goPage("20658350&amp;listAdvType=chk_list", 1);' style="height: 296px;"> <span class="img"> <span class="blt"> <span class="ass">보증</span> <img src="http://ci.encar.com/carpicture/carpicture05/pic2065/20658350_025.jpg" class="thumb" alt="쌍용 티볼리 에어 디젤 IX 2WD undefined 20658350" onerror="javascript:noImg_inquiry_B(this);"> </span> </span> <span class="inf"> <span class="cls"><strong>쌍용</strong> <em>티볼리 에어</em></span> <span class="dtl"><strong>디젤 IX 2WD </strong></span> </span> <span class="detail"> <span class="yer">16/03식</span>  <span class="km">7,264km</span>  <span class="trs">오토</span>  <span class="fue">디젤</span>  <span class="lo">경기</span>  </span> <span class="val"> <span class="prc"><strong>1,990</strong>만원</span>  <span class="real"><span class="ok">진단완료</span> 실차확인 <em>2017/04/04</em></span>  </span> </a> </li>  <li> <a href='javascript:goPage("20687617&amp;listAdvType=chk_list", 1);' style="height: 296px;"> <span class="img"> <span class="blt"> <span class="ass">보증</span> <img src="http://ci.encar.com/carpicture/carpicture08/pic2068/20687617_025.jpg" class="thumb" alt="현대 그랜저 HG HG300 노블 undefined 20687617" onerror="javascript:noImg_inquiry_B(this);"> </span> </span> <span class="inf"> <span class="cls"><strong>현대</strong> <em>그랜저 HG</em></span> <span class="dtl"><strong>HG300 노블 </strong></span> </span> <span class="detail"> <span class="yer">12/03식</span>  <span class="km">103,272km</span>  <span class="trs">오토</span>  <span class="fue">가솔린</span>  <span class="lo">서울</span>  </span> <span class="val"> <span class="prc"><strong>1,780</strong>만원</span>  <span class="real"><span class="ok">진단완료</span> 실차확인 <em>2017/04/10</em></span>  </span> </a> </li>  <li> <a href='javascript:goPage("20693763&amp;listAdvType=chk_list", 1);' style="height: 296px;"> <span class="img"> <span class="blt"> <span class="ass">보증</span> <img src="http://ci.encar.com/carpicture/carpicture09/pic2069/20693763_025.jpg" class="thumb" alt="현대 그랜드 스타렉스 12인승 왜건 CVX 프리미엄 20693763" onerror="javascript:noImg_inquiry_B(this);"> </span> </span> <span class="inf"> <span class="cls"><strong>현대</strong> <em>그랜드 스타렉스</em></span> <span class="dtl"><strong>12인승 왜건 CVX 프리미엄</strong></span> </span> <span class="detail"> <span class="yer">15/01식</span>  <span class="km">13,911km</span>  <span class="trs">오토</span>  <span class="fue">디젤</span>  <span class="lo">경기</span>  </span> <span class="val"> <span class="prc"><strong>2,210</strong>만원</span>  <span class="real"><span class="ok">진단완료</span> 실차확인 <em>2017/04/19</em></span>  </span> </a> </li>  <li> <a href='javascript:goPage("20710830&amp;listAdvType=chk_list", 1);' style="height: 296px;"> <span class="img"> <span class="blt"> <span class="ass">보증</span> <img src="http://ci.encar.com/carpicture/carpicture01/pic2071/20710830_025.jpg" class="thumb" alt="현대 NF 쏘나타 LPG N20 디럭스 기본형 20710830" onerror="javascript:noImg_inquiry_B(this);"> </span> </span> <span class="inf"> <span class="cls"><strong>현대</strong> <em>NF 쏘나타</em></span> <span class="dtl"><strong>LPG N20 디럭스 기본형</strong></span> </span> <span class="detail"> <span class="yer">06/03식</span>  <span class="km">90,904km</span>  <span class="trs">오토</span>  <span class="fue">LPG(일반인 구입)</span>  <span class="lo">충남</span>  </span> <span class="val"> <span class="prc"><strong>399</strong>만원</span>  <span class="real"><span class="ok">진단완료</span> 실차확인 <em>2017/04/18</em></span>  </span> </a> </li>  <li> <a href='javascript:goPage("20726096&amp;listAdvType=chk_list", 1);' style="height: 296px;"> <span class="img"> <span class="blt"> <span class="ass">보증</span> <img src="http://ci.encar.com/carpicture/carpicture02/pic2072/20726096_025.jpg" class="thumb" alt="현대 그랜저 HG HG300 익스클루시브 undefined 20726096" onerror="javascript:noImg_inquiry_B(this);"> </span> </span> <span class="inf"> <span class="cls"><strong>현대</strong> <em>그랜저 HG</em></span> <span class="dtl"><strong>HG300 익스클루시브 </strong></span> </span> <span class="detail"> <span class="yer">15/01식</span>  <span class="km">51,922km</span>  <span class="trs">오토</span>  <span class="fue">가솔린</span>  <span class="lo">대구</span>  </span> <span class="val"> <span class="prc"><strong>2,690</strong>만원</span>  <span class="real"><span class="ok">진단완료</span> 실차확인 <em>2017/04/18</em></span>  </span> </a> </li>  <li> <a href='javascript:goPage("20734608&amp;listAdvType=chk_list", 1);' style="height: 296px;"> <span class="img"> <span class="blt"> <span class="ass">보증</span> <img src="http://ci.encar.com/carpicture/carpicture03/pic2073/20734608_025.jpg" class="thumb" alt="기아 올 뉴 K7 2.4 GDI 리미티드 undefined 20734608" onerror="javascript:noImg_inquiry_B(this);"> </span> </span> <span class="inf"> <span class="cls"><strong>기아</strong> <em>올 뉴 K7</em></span> <span class="dtl"><strong>2.4 GDI 리미티드 </strong></span> </span> <span class="detail"> <span class="yer">17/01식</span>  <span class="km">1,044km</span>  <span class="trs">오토</span>  <span class="fue">가솔린</span>  <span class="lo">인천</span>  </span> <span class="val"> <span class="prc"><strong>3,470</strong>만원</span>  <span class="real"><span class="ok">진단완료</span> 실차확인 <em>2017/04/20</em></span>  </span> </a> </li>  </ul></div>
+
+    				</div>
+    				<!-- part.list end -->
+    				<!-- part.page begin -->
+    				<div id="page_list"> <div class="part page">    <span class="page"> <a class="current" href="javascript:goTo(1)">1</a> </span>    <span class="page"> <a href="javascript:goTo(2)">2</a> </span>    <span class="page"> <a href="javascript:goTo(3)">3</a> </span>    <span class="page"> <a href="javascript:goTo(4)">4</a> </span>    <span class="page"> <a href="javascript:goTo(5)">5</a> </span>    <span class="page"> <a href="javascript:goTo(6)">6</a> </span>    <span class="page"> <a href="javascript:goTo(7)">7</a> </span>    <span class="page"> <a href="javascript:goTo(8)">8</a> </span>    <span class="page"> <a href="javascript:goTo(9)">9</a> </span>    <span class="page"> <a href="javascript:goTo(10)">10</a> </span>     <span class="next"><a href="javascript:goTo(11)"><img src="/images/common/list/btn_list_next.gif" alt="이전10페이지"></a></span>  <span class="moveTop"><a href="#top">맨위로</a></span> </div></div>
+    				<!-- part.page end -->
+
+    			</div>
+    			<!-- section.list end -->
+
+    			<!-- 동급매물 차량 리스트 -->
+    			<div id="sub_list"></div>
+    </form>
+</body>
+</html>
